@@ -3,6 +3,9 @@ substitutions:
   _REGION: us-central1
   _SERVICE_NAME: etl-service-ass2
 
+options:
+  default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
+
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}', '.']
