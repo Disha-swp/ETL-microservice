@@ -1,0 +1,30 @@
+substitutions:
+  _PROJECT_ID: etl-microservice-project
+  _REGION: us-central1
+  _SERVICE_NAME: etl-service-ass2
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      [
+        'run',
+        'deploy',
+        '${_SERVICE_NAME}',
+        '--image',
+        'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}',
+        '--region',
+        '${_REGION}',
+        '--platform',
+        'managed',
+        '--allow-unauthenticated'
+      ]
+
+images:
+  - 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}'
