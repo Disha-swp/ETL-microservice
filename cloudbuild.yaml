@@ -13,6 +13,10 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}']
 
+  - name: 'python'
+    entrypoint: 'pytest'
+    args: ['test_validator.py']
+
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
