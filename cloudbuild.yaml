@@ -7,15 +7,19 @@ options:
   default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
 
 steps:
+  - name: 'python'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install -r requirements.txt
+        pytest test_validator.py
+
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}', '.']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}']
-
-  - name: 'python'
-    entrypoint: 'pytest'
-    args: ['test_validator.py']
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
