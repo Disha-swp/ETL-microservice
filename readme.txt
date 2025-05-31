@@ -210,7 +210,8 @@ Now every push to `main`:
 * Runs tests
 * Builds Docker image
 * Deploys to Cloud Run
-
+https://etl-service-ass2-269391214840.us-central1.run.app/ 
+job is running in the above url for this assignment
 You can access the service using the Cloud Run URL and POST your JSON payloads to `/ingest`.
 
 ---
