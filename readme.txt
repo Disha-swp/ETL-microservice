@@ -1,3 +1,17 @@
+Build a Cloud Run service that exposes an HTTP endpoint to accept JSON payloads
+representing sales transactions. The service should:
+● Validate the incoming JSON against a predefined schema.
+● Transform it (e.g., calculate tax, enrich with timestamp).
+● Load the cleaned records into a BigQuery table.
+Requirements:
+● Containerize the service (any language) and deploy to Cloud Run.
+● Write unit tests for schema validation and transformation logic.
+● Configure a Cloud Build pipeline:
+● Trigger on pushes to the main branch in your Git repo.
+● Build the container, run tests, and deploy to Cloud Run (with traffic splitting for staging
+vs. prod).
+
+
 Here’s a **beginner-friendly step-by-step guide** to build your Cloud Run ETL microservice with validation, transformation, BigQuery loading, and CI/CD using Cloud Build.
 
 ---
