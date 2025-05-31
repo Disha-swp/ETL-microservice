@@ -214,5 +214,3 @@ Now every push to `main`:
 You can access the service using the Cloud Run URL and POST your JSON payloads to `/ingest`.
 
 ---
-
-Let me know if you’d like a GitHub template repo or help testing it!
